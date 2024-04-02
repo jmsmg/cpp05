@@ -7,22 +7,21 @@
 class	Bureaucrat
 {
 	private:
-		std::string	_name;
-		int			_grade;
+		int					_grade;
+		const std::string	_name;
 
 	public:
 		Bureaucrat();
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &clone);
-		operator=(const Bureaucrat &clone);
 		ostream operator<<(const Bureaucrat &clone);
 
 		~Bureaucrat();
 
 		std::string	getName();
 		int			getGrade();
-		void		incrementGrade();
-		void		decrementGrade();
+		void		increseGrade();
+		void		decreseGrade();
 
 };
 
