@@ -8,14 +8,24 @@ class	Bureaucrat
 {
 	private:
 		int					_grade;
-		const std::string	_name;
+		std::string	_name;
+		class	GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char *what(void) const throw();
+		};
+
+		class	GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char *what(void) const throw();
+		};
 
 	public:
 		Bureaucrat();
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &clone);
-		ostream operator<<(const Bureaucrat &clone);
-
+		Bureaucrat	&operator=(const Bureaucrat &bureaucrat);
 		~Bureaucrat();
 
 		std::string	getName();
@@ -26,3 +36,6 @@ class	Bureaucrat
 };
 
 #endif
+
+ostream operator<<(const Bureaucrat &clone);
+
