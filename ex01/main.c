@@ -1,67 +1,30 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main()
 {
-	
-	std::cout << "--------- too high exception test -------" << std::endl;
-	Bureaucrat	person1("seonggoc", 1);
+	Bureaucrat	person("person", 10);
+	Form		form1("form1", false, 10, 10);
+	Form		form2("form2", false, 10, 10);
 
+	std::cout << "-------------- ok test -----------------" << std::endl;
+	person.signForm(form1);
+
+	std::cout << std::endl;
+
+	std::cout << "-------------- error test -----------------" << std::endl;
+	person.decreaseGrade();
 	try
 	{
-		person1.increaseGrade();
+		person.signForm(form2);
 	}
 	catch (std::exception &e)
 	{
-		std::cout << "-----------------------" << std::endl;
 		std::cout << e.what() << std::endl;
 	}
+
 	std::cout << std::endl;
 
-	std::cout << "--------- too low exception test -------" << std::endl;
-	Bureaucrat	person2("tmp", 150);
-
-	try
-	{
-		person2.decreaseGrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "-----------------------" << std::endl;
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-
-	std::cout << "--------- ok test -----------" << std::endl;
-
-	Bureaucrat	person3("cadet", 100);
-
-	try
-	{
-		person3.decreaseGrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "-----------------------" << std::endl;
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-
-	std::cout << "--------- ok test -----------" << std::endl;
-
-	Bureaucrat	person4("cadet2", 100);
-
-	try
-	{
-		person4.increaseGrade();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "-----------------------" << std::endl;
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	std::cout << person1 << std::endl;
-	std::cout << person2 << std::endl;
-	std::cout << person3 << std::endl;
-	std::cout << person4 << std::endl;
+	std::cout << "-------------- operator overloading test -----------------" << std::endl;
+	std::cout << form1 << std::endl;
 }

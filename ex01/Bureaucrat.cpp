@@ -2,7 +2,7 @@
 
 Bureaucrat::Bureaucrat(): _name("default"), _grade(150)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Bureaucrat Default constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
@@ -54,7 +54,7 @@ void	Bureaucrat::increaseGrade()
 	std::cout << "Bureaucrat increaseGrade function called" << std::endl;
 	if (this->_grade == 1)
 	{
-		throw GradeTooHighException();
+		throw (Bureaucrat::GradeTooHighException());
 	}
 	else
 	{
@@ -67,7 +67,7 @@ void	Bureaucrat::decreaseGrade()
 {
 	if (this->_grade == 150)
 	{
-		throw GradeTooLowException();
+		throw (Bureaucrat::GradeTooLowException());
 	}
 	else
 	{
@@ -84,6 +84,18 @@ const	char *Bureaucrat::GradeTooHighException::what(void) const throw()
 const	char *Bureaucrat::GradeTooLowException::what(void) const throw()
 {
 	return ("Error : Grade too Low");
+}
+
+void	Bureaucrat::signForm(Form &form) const
+{
+	if (form.getSign())
+	{
+		std::cout << "already signed" << std::endl;
+	}
+	else
+	{
+		form.beSigned(*this);
+	}
 }
 
 std::ostream	&operator<<(std::ostream &out, const Bureaucrat &obj)
