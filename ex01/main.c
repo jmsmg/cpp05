@@ -8,7 +8,7 @@ int	main()
 	Form		form2("form2", false, 10, 10);
 
 	std::cout << "-------------- ok test -----------------" << std::endl;
-	person.signForm(form1);
+	person.signForm(&form1);
 
 	std::cout << std::endl;
 
@@ -16,7 +16,7 @@ int	main()
 	person.decreaseGrade();
 	try
 	{
-		person.signForm(form2);
+		person.signForm(&form2);
 	}
 	catch (std::exception &e)
 	{

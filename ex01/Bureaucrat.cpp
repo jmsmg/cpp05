@@ -86,15 +86,15 @@ const	char *Bureaucrat::GradeTooLowException::what(void) const throw()
 	return ("Error : Grade too Low");
 }
 
-void	Bureaucrat::signForm(Form &form) const
+void	Bureaucrat::signForm(Form *form) const
 {
-	if (form.getSign())
+	if (form->getSign())
 	{
 		std::cout << "already signed" << std::endl;
 	}
 	else
 	{
-		form.beSigned(*this);
+		form->beSigned(*this);
 	}
 }
 
