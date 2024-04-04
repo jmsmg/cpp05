@@ -1,5 +1,6 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
+
 #include <iostream>
 #include <string>
 #include <stdexcept>
@@ -7,8 +8,9 @@
 class	Bureaucrat
 {
 	private:
-		int					_grade;
 		std::string	_name;
+		int			_grade;
+
 		class	GradeTooHighException : public std::exception
 		{
 			public:
@@ -30,12 +32,9 @@ class	Bureaucrat
 
 		std::string	getName();
 		int			getGrade();
-		void		increseGrade();
-		void		decreseGrade();
+		void		increaseGrade();
+		void		decreaseGrade();
 
 };
 
 #endif
-
-ostream operator<<(const Bureaucrat &clone);
-

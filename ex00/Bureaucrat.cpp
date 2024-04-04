@@ -15,6 +15,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 	{
 		throw Bureaucrat::GradeTooLowException();
 	}
+	this->_grade = grade;
 	std::cout << "constructor called" << std::endl;
 }
 
@@ -48,11 +49,12 @@ std::string	Bureaucrat::getName()
 	return (this->_name);
 }
 
-void		Bureaucrat::increseGrade()
+void	Bureaucrat::increaseGrade()
 {
+	std::cout << "Bureaucrat increaseGrade function called" << std::endl;
 	if (this->_grade == 1)
 	{
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 	}
 	else
 	{
@@ -61,11 +63,11 @@ void		Bureaucrat::increseGrade()
 	}
 }
 
-void		Bureaucrat::decreseGrade()
+void	Bureaucrat::decreaseGrade()
 {
 	if (this->_grade == 150)
 	{
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	}
 	else
 	{
@@ -76,5 +78,10 @@ void		Bureaucrat::decreseGrade()
 
 const	char *Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return ("")
+	return ("Error : Grade too high");
+}
+
+const	char *Bureaucrat::GradeTooLowException::what(void) const throw()
+{
+	return ("Error : Grade too Low");
 }
