@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <fstream>
 
 #include "Bureaucrat.hpp"
 
@@ -13,7 +14,7 @@ class	AForm
 	private:
 		std::string	_name;
 		bool		_sign;
-		int			_required_grade;
+		int			_sign_grade;
 		int			_execute_grade;
 
 		class	GradeTooHighException: public std::exception
@@ -28,19 +29,33 @@ class	AForm
 				virtual const char *what(void) const throw();
 		};
 
+	protected:
+		class	PermissionDeniedException: public std::exception
+		{
+			public:
+				virtual const char	*what(void) const throw();
+		};
+
 	public:
 		AForm();
-		AForm(const std::string name, const bool sign, const int required_grade, const int execute_grade);
+		AForm(const std::string name, const bool sign, const int sign_grade, const int execute_grade);
 		AForm(const AForm &obj);
 		AForm	&operator=(const AForm &obj);
 		~AForm();
 
 		std::string	getName() const;
 		bool		getSign() const;
-		int			getRequiredGrade() const;
+		int			getSignGrade() const;
 		int			getExecuteGrade() const;
 
-		virtual void	beSigned(const Bureaucrat &bureaucrat) = 0;
+		void		setSign(const bool &sign);
+		void		setSignGrade(const int &sign_grade);
+		void		setExecuteGrade(const int execute_grade);
+
+		void	beSigned(const Bureaucrat &bureaucrat);
+
+		virtual	void	execute(Bureaucrat const &executor) const = 0;
+
 };
 
 std::ostream	&operator<<(std::ostream &out, const AForm &obj);
