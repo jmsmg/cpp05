@@ -59,4 +59,9 @@ int	main()
 		std::cout << "-----------------------" << std::endl;
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << std::endl;
+	std::cout << person1 << std::endl;
+	std::cout << person2 << std::endl;
+	std::cout << person3 << std::endl;
+	std::cout << person4 << std::endl;
 }
