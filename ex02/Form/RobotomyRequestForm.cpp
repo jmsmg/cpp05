@@ -18,7 +18,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 	std::cout << "RobotomyRequestForm constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) : AForm(obj)
 {
 	this->_target = obj._target;
 	this->setSignGrade(obj.getSignGrade());
@@ -49,5 +49,17 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
+	if (!(this->getSign()))
+	{
+		std::cout << "this is not signed" << std::endl;
+		throw (RobotomyRequestForm::IsNotSignedException());
+	}
+	else if (45 < executor.getGrade())
+	{
+		std::cout << "Permission denied" << std::endl;
+		throw (PermissionDeniedException());
+	}
+
+
 	
 }

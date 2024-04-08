@@ -100,6 +100,11 @@ const char	*AForm::PermissionDeniedException::what(void) const throw()
 	return ("error : PermissionDeniedException");
 }
 
+const char	*AForm::IsNotSignedException::what(void) const throw()
+{
+	return ("error : IsNotSignedException");
+}
+
 void	AForm::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (this->_sign_grade < bureaucrat.getGrade())

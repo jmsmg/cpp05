@@ -49,5 +49,16 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
+	if (!(this->getSign()))
+	{
+		std::cout << "this is not signed" << std::endl;
+		throw (PresidentialPardonForm::IsNotSignedException());
+	}
+	else if (5 < executor.getGrade())
+	{
+		std::cout << "Permission denied" << std::endl;
+		throw (PermissionDeniedException());
+	}
+
 
 }

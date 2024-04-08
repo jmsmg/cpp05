@@ -18,7 +18,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
 	std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) : AForm(obj)
 {
 	this->_target = obj._target;
 	this->setSignGrade(obj.getSignGrade());
@@ -49,19 +49,34 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (137 < executor.getGrade())
+}
+
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+{
+	if (!(this->getSign()))
 	{
+		std::cout << "this is not signed" << std::endl;
+		throw (ShrubberyCreationForm::IsNotSignedException());
+	}
+	else if (137 < executor.getGrade())
+	{
+		std::cout << "Permission denied" << std::endl;
 		throw (PermissionDeniedException());
 	}
-	else
+
+	std::string		filename = executor.getName() + "_shrubbery";
+	std::ofstream	outfile(filename.c_str(), std::ios::out);
+
+	if (outfile.is_open())
 	{
-		std::ofstream out(executor.getName() + "_shrubbery");
-
-		std::string	s = "";
-
-		if (out.is_open())
-		{
-			out << s;
-		}
+		outfile << "       _-_\\\n";
+		outfile << "    /~~   ~~\\\n";
+		outfile << "  /~~         ~~\\\n";
+		outfile << " {               }\n";
+		outfile << " \\\\  _-     -_  /\n";
+		outfile << "    ~  \\\\ //  ~\n";
+		outfile << " _- -   | | _- _\n";
+		outfile << "   _ -  | |   -_\n";
+		outfile << "       // \\\\";
 	}
 }

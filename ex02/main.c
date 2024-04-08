@@ -1,11 +1,12 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "Form/PresidentialPardonForm.hpp"
+#include "Form/RobotomyRequestForm.hpp"
+#include "Form/ShrubberyCreationForm.hpp"
 
 int	main()
 {
 	Bureaucrat	person("person", 10);
-	Form		form1("form1", false, 10, 10);
-	Form		form2("form2", false, 10, 10);
+	AForm		*form1 = new ShrubberyCreationForm("home");
 
 	std::cout << "-------------- ok test -----------------" << std::endl;
 	person.signForm(form1);
@@ -16,7 +17,7 @@ int	main()
 	person.decreaseGrade();
 	try
 	{
-		person.signForm(form2);
+		person.signForm(form1);
 	}
 	catch (std::exception &e)
 	{
@@ -26,5 +27,5 @@ int	main()
 	std::cout << std::endl;
 
 	std::cout << "-------------- operator overloading test -----------------" << std::endl;
-	std::cout << form1 << std::endl;
+	std::cout << *form1 << std::endl;
 }

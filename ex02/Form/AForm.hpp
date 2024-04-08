@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <fstream>
 
-#include "Bureaucrat.hpp"
+#include "../Bureaucrat.hpp"
 
 class	Bureaucrat;
 
@@ -36,6 +36,12 @@ class	AForm
 				virtual const char	*what(void) const throw();
 		};
 
+		class	IsNotSignedException: public std::exception
+		{
+			public:
+				virtual const char	*what(void) const throw();
+		};
+
 	public:
 		AForm();
 		AForm(const std::string name, const bool sign, const int sign_grade, const int execute_grade);
@@ -52,7 +58,7 @@ class	AForm
 		void		setSignGrade(const int &sign_grade);
 		void		setExecuteGrade(const int execute_grade);
 
-		void	beSigned(const Bureaucrat &bureaucrat);
+		void		beSigned(const Bureaucrat &bureaucrat);
 
 		virtual	void	execute(Bureaucrat const &executor) const = 0;
 
