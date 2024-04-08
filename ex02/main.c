@@ -5,7 +5,9 @@
 
 int	main()
 {
-	Bureaucrat	person("person", 10);
+	Bureaucrat	person("person", 1);
+	Bureaucrat	person2("person2", 150);
+
 	AForm		*form1 = new ShrubberyCreationForm("home");
 
 	std::cout << "-------------- ok test -----------------" << std::endl;
@@ -24,6 +26,41 @@ int	main()
 		std::cout << e.what() << std::endl;
 	}
 
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "-------------- ShrubberyCreationForm test -----------------" << std::endl;
+	person.executeForm(*form1);
+
+	std::cout << std::endl;
+	std::cout << "-------------- error test -----------------" << std::endl;
+	
+	person2.executeForm(*form1);
+
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "-------------- RobotomyRequestForm test -----------------" << std::endl;
+	RobotomyRequestForm robo = RobotomyRequestForm("robo");
+	person.signForm(&robo);
+	person.executeForm(robo);
+
+	std::cout << std::endl;
+	std::cout << "-------------- error test -----------------" << std::endl;
+	person2.executeForm(robo);
+
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "-------------- PresidentialPardonForm test -----------------" << std::endl;
+	PresidentialPardonForm resi = PresidentialPardonForm("resi");
+	person.signForm(&resi);
+	person.executeForm(resi);
+
+	std::cout << "-------------- error test -----------------" << std::endl;
+	person2.executeForm(resi);
+
+	std::cout << std::endl;
 	std::cout << std::endl;
 
 	std::cout << "-------------- operator overloading test -----------------" << std::endl;

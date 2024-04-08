@@ -70,6 +70,11 @@ int		AForm::getExecuteGrade() const
 	return (this->_execute_grade);
 }
 
+void		AForm::setName(const std::string name)
+{
+	this->_name = name;
+}
+
 void		AForm::setSign(const bool &sign)
 {
 	this->_sign = sign;

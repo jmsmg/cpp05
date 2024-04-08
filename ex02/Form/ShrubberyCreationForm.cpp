@@ -21,9 +21,10 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) : AForm(obj)
 {
 	this->_target = obj._target;
+	this->setName(obj.getName());
+	this->setSign(obj.getSign());
 	this->setSignGrade(obj.getSignGrade());
 	this->setExecuteGrade(obj.getExecuteGrade());
-	this->setSign(obj.getSign());
 
 	std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
 }
@@ -49,10 +50,6 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-}
-
-void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
-{
 	if (!(this->getSign()))
 	{
 		std::cout << "this is not signed" << std::endl;
@@ -69,8 +66,8 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 
 	if (outfile.is_open())
 	{
-		outfile << "       _-_\\\n";
-		outfile << "    /~~   ~~\\\n";
+		outfile << "       /_-_\\\n";
+		outfile << "    /~~    ~~\\\n";
 		outfile << "  /~~         ~~\\\n";
 		outfile << " {               }\n";
 		outfile << " \\\\  _-     -_  /\n";

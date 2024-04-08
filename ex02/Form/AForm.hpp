@@ -54,6 +54,7 @@ class	AForm
 		int			getSignGrade() const;
 		int			getExecuteGrade() const;
 
+		void		setName(const std::string name);
 		void		setSign(const bool &sign);
 		void		setSignGrade(const int &sign_grade);
 		void		setExecuteGrade(const int execute_grade);

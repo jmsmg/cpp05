@@ -21,9 +21,10 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) : AForm(obj)
 {
 	this->_target = obj._target;
+	this->setName(obj.getName());
+	this->setSign(obj.getSign());
 	this->setSignGrade(obj.getSignGrade());
 	this->setExecuteGrade(obj.getExecuteGrade());
-	this->setSign(obj.getSign());
 
 	std::cout << "RobotomyRequestForm copy constructor called" << std::endl;
 }
@@ -60,6 +61,14 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		throw (PermissionDeniedException());
 	}
 
+	std::cout << "ddrrrrrill noise" << std::endl;
 
-	
+	std::srand(std::time(NULL));
+
+	if (rand() % 2)
+	{
+		std::cout << this->_target << " fail robotomized" << std::endl;
+		return ;
+	}
+	std::cout << this->_target << " succeed robotomized" << std::endl;
 }
