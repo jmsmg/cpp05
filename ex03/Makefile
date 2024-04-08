@@ -1,8 +1,12 @@
-CC = C++
+CC = g++
 FLAG = -Wall -Wextra -Werror -std=c++98
 NAME = a.out
 OBJS = $(SRCS:.cpp=.o)
-SRCS = main.cpp
+SRCS = main.cpp Bureaucrat.cpp Intern.cpp\
+		Form/AForm.cpp \
+		Form/ShrubberyCreationForm.cpp \
+		Form/RobotomyRequestForm.cpp \
+		Form/PresidentialPardonForm.cpp
 
 %.o: %.cpp
 	$(CC) $(FLAG) -o $@ -c $<
